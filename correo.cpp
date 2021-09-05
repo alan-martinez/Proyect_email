@@ -96,7 +96,7 @@ void Correo::setContenido(){
 
         contador += i+1;
 
-        if (temp[0] == 'E' and temp[i - 1] == 'R'){
+        if (temp[0] == 'E' and temp[i - 1] == 'T'){
             bandera = false;
         }
         else {

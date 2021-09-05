@@ -68,7 +68,8 @@ void Menu::menuOpciones()
                 cin.getline(temp,50);
                 correo.setAsunto(puntero);
 
-                cout << "Contenido:" << endl;
+                cout << "Contenido: " << endl;
+                cout << "Para enviar escribe -EXIT-" << endl;
                 correo.setContenido();
                 cout << endl << endl;
 
