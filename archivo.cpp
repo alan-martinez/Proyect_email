@@ -12,6 +12,10 @@ unsigned long int Archivo::apuntador(unsigned long int& i){
     return (i-1) * sizeof(Correo);
 }
 
+char Archivo::apuntadorCadena(char& c){
+    return (c-1) * sizeof(Correo);
+}
+
 void Archivo::escribir(const Correo& c,unsigned long int& i)
 {
     archivo.open("emails.dat", ios::in | ios::out | ios::binary);
@@ -217,5 +221,52 @@ void Archivo::modificar(unsigned long int& i)
             remove("emails.dat");
             rename("temporal.dat","emails.dat");
         }
+    }
+}
+
+void Archivo::buscarRemitente(char& f)
+{
+    Correo c;
+    char remi[20];
+    char *aux;
+
+    archivo.open("emails.dat", ios::in | ios::binary);
+
+    if (archivo.fail()){
+        cout << "Ocurrio un error al abrir el archivo" << endl;
+        exit(1);
+    }
+    else {
+        //archivo.close();
+        // cout << "Introduce el remitente a buscar: " << endl;
+        // cin >> remi;
+
+        //posición = NRR * (cantidad de bytes por registro) 
+        int posicion ;
+        //posicion = c.getId() * ()
+
+        archivo.seekp(apuntadorCadena(f));
+        // archivo.seekg(0);
+        archivo.read((char* )&c, sizeof(Correo));
+        archivo.close();
+        //cin.getline(remi,20);
+        cout << c.getRemitente() << endl;
+
+        //if (remi == c.getRemitente()){
+
+            cout << "Correo encontrado!" << endl;
+            cout << "ID: " << c.getId() << endl;
+            cout << "Remitente: " << c.getRemitente() << endl;
+            cout << "Destinatario: " << c.getDestinatario() << endl;
+            cout << "Copia carbono: " << c.getCopiaCarbono() << endl;
+            cout << "Copia carbono ciega: " << c.getCopiaCarbonoCiega() << endl;
+            cout << "Asunto: " << c.getAsunto() << endl;
+            cout << "Contenido: " << c.getContenido() << endl;
+        // }
+        // else {
+        //     cout << "No se pudo encontrar en correo" << endl;
+        // }
+
+        
     }
 }

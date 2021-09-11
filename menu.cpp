@@ -18,14 +18,15 @@ void Menu::eje()
         cout << "1. Escribir correo" << endl;
         cout << "2. Leer correo" << endl;
         cout << "3. Modificar correo" << endl;
-        cout << "4. Salir" << endl;
+        cout << "4. Buscar por remitente" << endl;
+        cout << "5. Salir" << endl;
 
         cout << "Ingrese su opcion: " << endl;
         cin >> opcion;
         menuOpciones();
         cout << endl;
     }
-    while (opcion != 4);
+    while (opcion != 5);
 
     cout << "Saliste!" << endl;
 }
@@ -37,6 +38,7 @@ void Menu::menuOpciones()
     puntero = temp;
     unsigned long int posicion;
     unsigned long int buscar;
+    char dest;
 
     switch(opcion){
         case 1:
@@ -93,6 +95,19 @@ void Menu::menuOpciones()
                 
             }
         case 4:
+            {
+                cout << "Introduce el remitente a buscar: " << endl;
+                cin >> dest;
+
+                //cin.getline(temp,20);
+                // char* p = temp;
+                // p=temp;
+
+                //cin.getline(puntero,20);
+                archivo.buscarRemitente(dest);
+                break;
+            }
+        case 5:
             {
                 break;
             }
